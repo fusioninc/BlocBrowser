@@ -24,11 +24,40 @@
 
 @implementation ViewController
 
+#pragma mark - Reset WebView
+
+- (void)resetWebView {
+    [self.webView removeFromSuperview];
+    
+    WKWebView *newWebView = [[WKWebView alloc] init];
+    newWebView.navigationDelegate = self;
+    
+    [self.view addSubview:newWebView];
+    
+    self.webView = newWebView;
+    [self addButtonTargets];
+    
+    self.textField.text = nil;
+    [self updateButtonsAndTitle];
+    
+}
+
+- (void)addButtonTargets {
+    for (UIButton *button in @[self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
+        [button removeTarget:nil action:NULL forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+    [self.reloadButton addTarget:self.webView action:@selector(reload) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
 #pragma mark - UIViewController
 
 - (void)loadView {
     UIView *mainView = [[UIView alloc] init];
-    self.view = mainView;
     
     self.webView = [[WKWebView alloc] init];
     self.webView.navigationDelegate = self;
@@ -55,17 +84,18 @@
     [self.reloadButton setEnabled:NO];
     
     [self.backButton setTitle:NSLocalizedString(@"Back", @"Back command") forState:UIControlStateNormal];
-    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    
+//    [self.backButton addTarget:self.webView action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+//    
     [self.forwardButton setTitle:NSLocalizedString(@"Forward", @"Forward command") forState:UIControlStateNormal];
-    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
-    
+//    [self.forwardButton addTarget:self.webView action:@selector(goForward) forControlEvents:UIControlEventTouchUpInside];
+//    
     [self.stopButton setTitle:NSLocalizedString(@"Stop", @"Stop command") forState:UIControlStateNormal];
-    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
-    
+//    [self.stopButton addTarget:self.webView action:@selector(stopLoading) forControlEvents:UIControlEventTouchUpInside];
+//    
     [self.reloadButton setTitle:NSLocalizedString(@"Reload", @"Reload command") forState:UIControlStateNormal];
-    [self.reloadButton addTarget:self.webView action:@selector(reloadButton) forControlEvents:UIControlEventTouchUpInside];
-    
+//    [self.reloadButton addTarget:self.webView action:@selector(reloadButton) forControlEvents:UIControlEventTouchUpInside];
+//
+    [self addButtonTargets];
     
     //Hardcoded URL
 //    NSString *urlString = @"http://wikipedia.org";
@@ -73,8 +103,8 @@
 //    NSURLRequest *request = [NSURLRequest requestWithURL:url];
 //    [self.webView loadRequest:request];
     
-    [mainView addSubview:self.webView];
-    [mainView addSubview:self.textField];
+//    [mainView addSubview:self.webView];
+//    [mainView addSubview:self.textField];
     
     //add button on mainView
 //    [mainView addSubview:self.backButton];
@@ -83,6 +113,12 @@
 //    [mainView addSubview:self.reloadButton];
 
     //Instead of adding one by one - use to add the button views
+    
+    //Instead of declaring a NSArray like
+    //NSArray *viewArray = @[self.webView, self.textField, self.backButton, self.forwardButton, self.stopButton, self.reloadButton]
+    //Then going for a for loop enumeration.
+    // You can do this following.
+    
     for (UIView *viewToAdd in @[self.webView, self.textField, self.backButton, self.forwardButton, self.stopButton, self.reloadButton]) {
         [mainView addSubview:viewToAdd];
     }
@@ -169,6 +205,7 @@
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     if (error.code != NSURLErrorCancelled) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", @"Error") message:[error localizedDescription] preferredStyle:UIAlertControllerStyleAlert];
+        
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:okAction];
         
@@ -180,8 +217,16 @@
 
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
+    UIAlertController *welcome = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Welcome!", @"Welcome!") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:nil];
+    
+    [welcome addAction:okAction];
+    
     [self updateButtonsAndTitle];
 }
+
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [self updateButtonsAndTitle];
@@ -206,7 +251,8 @@
     self.backButton.enabled = [self.webView canGoBack];
     self.forwardButton.enabled = [self.webView canGoForward];
     self.stopButton.enabled = self.webView.isLoading;
-    self.reloadButton.enabled = self.webView.isLoading;
+//    self.reloadButton.enabled = !self.webView.isLoading;
+    self.reloadButton.enabled = !self.webView.isLoading && self.webView.URL;
 }
 
 @end
