@@ -25,6 +25,15 @@
     
     [self.window makeKeyAndVisible];
     
+    
+    UIAlertController *welcome = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Welcome!", @"Welcome!") message:nil preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:nil];
+    
+    [welcome addAction:okAction];
+    
+    [self.window.rootViewController presentViewController:welcome animated:YES completion:nil];
+    
     return YES;
 }
 
