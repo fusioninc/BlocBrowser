@@ -13,7 +13,7 @@
 		3150F22E1B326D2E00A6F3A5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3150F22D1B326D2E00A6F3A5 /* Images.xcassets */; };
 		3150F2311B326D2E00A6F3A5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3150F22F1B326D2E00A6F3A5 /* LaunchScreen.xib */; };
 		3150F23D1B326D2E00A6F3A5 /* BlocBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3150F23C1B326D2E00A6F3A5 /* BlocBrowserTests.m */; };
-		3150F2481B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3150F2471B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.m */; };
+		3150F24B1B38ADD200A6F3A5 /* AwesomeFloatingToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3150F24A1B38ADD200A6F3A5 /* AwesomeFloatingToolbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +39,8 @@
 		3150F2361B326D2E00A6F3A5 /* BlocBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlocBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3150F23B1B326D2E00A6F3A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3150F23C1B326D2E00A6F3A5 /* BlocBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlocBrowserTests.m; sourceTree = "<group>"; };
-		3150F2461B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AwesomeFloatingToolbar.h"; sourceTree = "<group>"; };
-		3150F2471B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AwesomeFloatingToolbar.m"; sourceTree = "<group>"; };
+		3150F2491B38ADD200A6F3A5 /* AwesomeFloatingToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeFloatingToolbar.h; sourceTree = "<group>"; };
+		3150F24A1B38ADD200A6F3A5 /* AwesomeFloatingToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeFloatingToolbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +86,8 @@
 				3150F2251B326D2E00A6F3A5 /* AppDelegate.m */,
 				3150F2271B326D2E00A6F3A5 /* ViewController.h */,
 				3150F2281B326D2E00A6F3A5 /* ViewController.m */,
-				3150F2461B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.h */,
-				3150F2471B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.m */,
+				3150F2491B38ADD200A6F3A5 /* AwesomeFloatingToolbar.h */,
+				3150F24A1B38ADD200A6F3A5 /* AwesomeFloatingToolbar.m */,
 				3150F22D1B326D2E00A6F3A5 /* Images.xcassets */,
 				3150F22F1B326D2E00A6F3A5 /* LaunchScreen.xib */,
 				3150F2201B326D2E00A6F3A5 /* Supporting Files */,
@@ -222,7 +222,7 @@
 			files = (
 				3150F2291B326D2E00A6F3A5 /* ViewController.m in Sources */,
 				3150F2261B326D2E00A6F3A5 /* AppDelegate.m in Sources */,
-				3150F2481B38A73C00A6F3A5 /* UIView+AwesomeFloatingToolbar.m in Sources */,
+				3150F24B1B38ADD200A6F3A5 /* AwesomeFloatingToolbar.m in Sources */,
 				3150F2231B326D2E00A6F3A5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

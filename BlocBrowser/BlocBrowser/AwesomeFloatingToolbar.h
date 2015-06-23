@@ -1,5 +1,5 @@
 //
-//  UIView+AwesomeFloatingToolbar.h
+//  AwesomeFloatingToolbar.h
 //  BlocBrowser
 //
 //  Created by Fusion on 6/22/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (AwesomeFloatingToolbar)
+@interface AwesomeFloatingToolbar : UIView
 
 @end
