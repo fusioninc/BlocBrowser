@@ -26,6 +26,7 @@
     [self.window makeKeyAndVisible];
     
     
+    //Make welcome screen on launch
     UIAlertController *welcome = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Welcome!", @"Welcome!") message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:nil];
