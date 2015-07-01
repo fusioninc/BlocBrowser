@@ -218,4 +218,11 @@
     }
 }
 
+#pragma mark - Zoom
+
+- (void) floatingToolbar:(AwesomeFloatingToolbar *)toolbar didTryToZoom:(UIPinchGestureRecognizer *)recognizer {
+    toolbar.transform = CGAffineTransformScale(toolbar.transform, recognizer.scale, recognizer.scale);
+    recognizer.scale = 1;
+}
+
 @end
